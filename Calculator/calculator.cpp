@@ -1,7 +1,7 @@
 // Date: 27/01/2025
 // Project: Calculator
 // Project function: Simple calculator that can add, sub, mult, div, mod and expo of two numbers
-
+// status: Finished
 #include<iostream>
 #include<cmath>
 using namespace std;
