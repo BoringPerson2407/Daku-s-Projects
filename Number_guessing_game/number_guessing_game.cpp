@@ -14,13 +14,18 @@ int main()
     int user_guess, attempts;
     while (user_input != -1)
     {
-        cout << "**********************************************" << endl;
+        cout << "\n**********************************************" << endl;
         cout << "*                                            *" << endl;
         cout << "*              Play the game: 0              *" << endl;
         cout << "*              exit: -1                      *" << endl;
         cout << "*                                            *" << endl;
         cout << "**********************************************" << endl;
         cin >> user_input;
+        if (user_input==-1)
+        {
+            break;
+        }
+        
         cout << endl;
         cout << "**********************************************" << endl;
         cout << "*                                            *" << endl;
@@ -32,16 +37,19 @@ int main()
         int num = 90;
         while (attempts > 0)
         {
-            cout << "Guess the number!!" << endl;
+            cout << "Guess the number!" << endl;
             cin >> user_guess;
             if (guess(num, user_guess, &attempts))
             {   
-                cout << "You guessed the right number! ";
+                cout << "You guessed the right number! " << endl;
                 cout << "Play again: 0" << endl;
                 cout << "exit: -1" << endl;
-                cin >> user_input;
                 break;
             }
+            else
+            {
+                cout << "you have " << attempts << " attempts!" << endl;
+            }   
             
         }
         
@@ -51,4 +59,16 @@ int main()
 
 
     return 0;
+}
+bool guess(int num, int user_input, int *attempts)
+{
+    if(num == user_input)
+    {
+        return true;
+    }
+    else
+    {
+        (*attempts)--;
+        return false;
+    }
 }
