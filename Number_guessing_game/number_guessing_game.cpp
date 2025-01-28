@@ -1,18 +1,22 @@
 // Date: 28/01/2025
 // Project: Number guessing game
 // Project function: Program will generate a random number and user has to guess it in 5 attempts
-// status: work in progress
+// status: finished
 
 #include<iostream>
+#include<cstdlib>
+#include<ctime>
+
 using namespace std;
 
-bool guess(int num, int user_input, int* attempts);
+bool guess(int num, int user_guess, int* attempts);
 
 int main()
-{
-    int user_input, difficulty;
+{   
+    srand(time(0));
+    int action_input, difficulty;
     int user_guess, attempts;
-    while (user_input != -1)
+    while (action_input != -1)
     {
         cout << "\n**********************************************" << endl;
         cout << "*                                            *" << endl;
@@ -20,11 +24,17 @@ int main()
         cout << "*              exit: -1                      *" << endl;
         cout << "*                                            *" << endl;
         cout << "**********************************************" << endl;
-        cin >> user_input;
-        if (user_input==-1)
+        cin >> action_input;
+        if (action_input==-1)
         {
             break;
         }
+        else if (action_input != 0)
+        {
+            cout << "Please enter a correct input!" << endl;
+            continue;
+        }
+        
         
         cout << endl;
         cout << "**********************************************" << endl;
@@ -34,7 +44,23 @@ int main()
         cout << "**********************************************" << endl;
         cin >> difficulty;
         attempts = 5;
-        int num = 90;
+        int num = 0;
+        switch (difficulty)
+        {
+        case 1:
+            num = rand() % 10 + 1;
+            break;
+        case 2:
+            num = rand() % 50 + 1;
+            break;
+        case 3:
+            num = rand() % 100 + 1;
+            break;
+        default:
+            cout << "Invalid input! please enter a number between 1 and 3" << endl;
+            continue;
+            break;
+        }
         while (attempts > 0)
         {
             cout << "Guess the number!" << endl;
@@ -47,7 +73,17 @@ int main()
                 break;
             }
             else
-            {
+            {   
+                if (user_guess < num)
+                {
+                    cout << "go higher" << endl;
+                }
+                else
+                {
+                    cout << "go lower" << endl;
+                }
+                
+                
                 cout << "you have " << attempts << " attempts!" << endl;
             }   
             
@@ -60,9 +96,9 @@ int main()
 
     return 0;
 }
-bool guess(int num, int user_input, int *attempts)
+bool guess(int num, int user_guess, int *attempts)
 {
-    if(num == user_input)
+    if(num == user_guess)
     {
         return true;
     }
