@@ -21,6 +21,10 @@ class matrix
         void set_el(int i, int j, int val); // function to set the value of the elements of the matrix
         void set_rand_val(int start, int end); // function to set the value of matrix with randomly generated integers between start and end
         vector<vector<int>> get_mat() const; // getter function
+        ~matrix()
+        {
+            
+        }
 
 };
 matrix add(const matrix& m1, const matrix& m2); // function to add two matrices and assisgn their res;
@@ -29,15 +33,19 @@ bool issamedime(const matrix& m1, const matrix& m2); // function to check if the
 int main()
 {   
     srand(time(0));
-    matrix m1(3,3,0);
-    matrix m2(3,3,0);
-    m1.set_rand_val(1, 10);
-    m2.set_rand_val(1, 10);
+    
+    matrix m1(3, 3, 0);
+    matrix m2(3, 3, 0);
+
+    m1.set_rand_val(1, 100);
+    m2.set_rand_val(1, 100);
+
     m1.print();
     cout << endl;
     m2.print();
-    matrix re = add(m1, m2);
-    re.print();
+    cout << endl;
+    cout << "stop" << endl;
+
     return 0;
 }
 void matrix :: print()
@@ -80,7 +88,7 @@ void matrix :: set_rand_val(int start, int end)
     {
         for (int j = 0; j < column; j++)
         {
-            mat[i][j] = rand() % end + start;
+            mat[i][j] = rand() % (end - start + 1) + start;
         } 
     }
     
