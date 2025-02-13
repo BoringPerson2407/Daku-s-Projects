@@ -8,6 +8,7 @@
 #include<limits>
 #include<algorithm>
 #include<fstream>
+#include<sstream>
 
 using namespace std;
 
@@ -127,22 +128,65 @@ void task_manager :: delete_task(int id)
     }
     
 }
+void task_manager :: save()
+{
+    ofstream file("tasks.txt");
+    if (!file)
+    {
+        cout << "Error occured while opening the file!" << endl;
+        return;
+    }
+    for(const task &t : tasks)
+    {
+        file << t.id << " | "
+        << t.title << " | "
+        << t.due_date << " | "
+        << t.priority << " | "
+        << t.completed << "\n";
+    }
+    file.close();
+    cout << "Tasks saved on file successfully! " << endl;
+}
+void task_manager :: load()
+{
+    ifstream file("tasks.txt");
+    if (!file)
+    {
+        cout << "No save tasks on file!" << endl;
+        return;
+    }
+    tasks.clear();
+    string line;
+    while (getline(file, line))
+    {
+        stringstream ss(line);
+        string idstr, title, dd, prioritystr, complestr;
 
+        getline(ss, idstr, '|');
+        getline(ss, title, '|');
+        getline(ss, dd, '|');
+        getline(ss, prioritystr, '|');
+        getline(ss, complestr, '|');
+
+        int id = stoi(idstr);
+        int priority = stoi(prioritystr);
+        bool completed = (complestr == "1");
+
+        task loaded_task(id, title, dd, priority);
+        loaded_task.completed = completed;
+        tasks.push_back(loaded_task);
+
+        if (id >= nextid)
+        {
+            nextid = id + 1;
+        }
+    }
+    cout << "Task loaded successfully!" << endl;
+}
 int main()
 {   
     task_manager me;
-    me.view_task();
-    me.add_task();
-    me.add_task();
-    me.add_task();
-    me.add_task();
-    me.view_task();
-    me.task_done();
-    me.view_task();
-    int id;
-    cout << "Which task you want to delete: ";
-    cin >> id;
-    me.delete_task(id);
+    me.load();
     me.view_task();
 
     return 0;
