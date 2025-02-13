@@ -7,6 +7,7 @@
 #include<string>
 #include<limits>
 #include<algorithm>
+#include<fstream>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ class task_manager
     public:
         void add_task();
         void view_task();
-        void delete_task();
+        void delete_task(int id);
         void task_done();
         void save();
         void load();
@@ -112,6 +113,21 @@ void task_manager :: task_done()
     }
     
 }
+void task_manager :: delete_task(int id)
+{
+    auto it = remove_if(tasks.begin(), tasks.end(), [id](const task &t){return t.id == id;});
+    if ( it != tasks.end())
+    {
+        tasks.erase(it, tasks.end());
+        cout << "Tasks deleted successfully!" << endl;
+    }
+    else
+    {
+        cout << "Task with Id " << id << "is not found in the list" << endl;
+    }
+    
+}
+
 int main()
 {   
     task_manager me;
@@ -122,6 +138,11 @@ int main()
     me.add_task();
     me.view_task();
     me.task_done();
+    me.view_task();
+    int id;
+    cout << "Which task you want to delete: ";
+    cin >> id;
+    me.delete_task(id);
     me.view_task();
 
     return 0;
