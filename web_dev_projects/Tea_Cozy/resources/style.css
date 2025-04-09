@@ -1,3 +1,4 @@
+/* body  */
 *
 {
     padding: 0;
@@ -11,4 +12,37 @@ body
     font-size: 22px;
     text-align: center;
     opacity: 0.9;
+}
+/* header  */
+header
+{
+    border-bottom: 1px solid seashell;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 69px;
+    width: 100%;
+    position: fixed;
+}
+header img
+{
+    height: 50px;
+    width: auto;
+}
+.nav
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    list-style-type: none;
+    
+}
+.nav li
+{
+    margin: 20px;
+}
+li a
+{
+    color: seashell;
 }
