@@ -1,0 +1,14 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+body
+{
+    font-family:Helvetica,  Arial, sans-serif;
+    background-color: black;
+    color: seashell;
+    font-size: 22px;
+    text-align: center;
+    opacity: 0.9;
+}
