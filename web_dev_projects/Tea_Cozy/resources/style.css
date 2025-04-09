@@ -13,9 +13,8 @@ body
     text-align: center;
     opacity: 0.9;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 /* header  */
 header
@@ -28,7 +27,7 @@ header
     height: 69px;
     width: 100%;
     position: fixed;
-    z-index: 12;
+    top: 0;
 }
 header img
 {
@@ -56,15 +55,69 @@ li a
 {   
     position: relative;
     top: 69px;
-    display: flex;
-    background-image: url("./img-mission-background.jpg");
-    width: 1350px;
     height: 700px;
-    flex-direction: column;
+    width: 1350px;
+    background-image: url(./img-mission-background.jpg);
+    display: flex;
     justify-content: center;
-
+    align-items: center;
 }
 .mission div
 {
     background-color: black;
+    width: 100%;
+}
+.month
+{
+    background-color: black;
+    height: 700px;
+    width: 1000px;
+}
+.tea-type
+{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+.tea-type li img
+{
+    height: 200px;
+    width: 300px;
+    padding: 10px;
+}
+.location
+{
+    background-image: url(./img-locations-background.jpg);
+    height: 500px;
+    width: 1350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+.location h2
+{
+    margin-bottom: 15px;
+}
+.lb
+{
+    display: flex;
+    justify-content: center;
+}
+.l 
+{   
+    background-color: black;
+    height: 300px;
+    width: 300px;
+    margin: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+    justify-content: space-evenly;
+    opacity: 0.9;
 }
