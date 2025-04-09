@@ -1,3 +1,4 @@
+/* body  */
 *
 {
     padding: 0;
@@ -16,7 +17,6 @@ body
     align-items: center;
     justify-content: center;
 }
-<<<<<<< HEAD
 /* header  */
 header
 {
@@ -28,7 +28,7 @@ header
     height: 69px;
     width: 100%;
     position: fixed;
-    z-index: 10;
+    z-index: 12;
 }
 header img
 {
@@ -68,5 +68,3 @@ li a
 {
     background-color: black;
 }
-=======
->>>>>>> parent of 4e2299b (header-done)
